@@ -1,0 +1,13 @@
+{
+  "serialPort": {
+    "baudRate": 19200,
+    "parity": "none",
+    "dataBits": 8,
+    "stopBits": 1
+  },
+  "startCharacter": "/",
+  "stopCharacter": "!",
+  "connectionSetupTimeout": 5000,
+  "debugRawDataFile": "debug-data-raw.log",
+  "debugParsedDataFile": "debug-data-parsed.log"
+}
