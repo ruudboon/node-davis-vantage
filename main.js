@@ -85,7 +85,7 @@ function _setupSerialConnection() {
           serialPortUsed = port;
           constructor.emit('connected', port);
 
-          sp.write('LOOP 1000\n');
+          sp.write('LOOP 1\n');
           return;
         }
       }
@@ -95,6 +95,9 @@ function _setupSerialConnection() {
         data = data.slice(1);
       }
       parsePacket(data);
+      setTimeout(function () {
+        sp.write('LOOP 1\n');
+      }, 2000)
     });
   });
 
