@@ -94,10 +94,11 @@ function _setupSerialConnection() {
         // remove ack
         data = data.slice(1);
       }
-      parsePacket(data);
+      var parsedData = parsePacket(data);
       setTimeout(function () {
         sp.write('LOOP 1\n');
       }, 2000)
+      return parsedData;
     });
   });
 
