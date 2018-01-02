@@ -95,10 +95,10 @@ function _setupSerialConnection() {
         data = data.slice(1);
       }
       var parsedData = parsePacket(data);
+      constructor.emit('data', parsedData);
       setTimeout(function () {
         sp.write('LOOP 1\n');
-      }, 2000)
-      return parsedData;
+      }, 2000);
     });
   });
 

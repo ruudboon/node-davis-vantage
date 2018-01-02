@@ -14,6 +14,10 @@ davisReader.on('reading-raw', function(data) {
   // console.log(data);
 });
 
+davisReader.on('data', function(data) {
+  console.log(data);
+});
+
 davisReader.on('error', function(error) {
   console.log(error);
 });
