@@ -85,7 +85,7 @@ function _setupSerialConnection() {
           serialPortUsed = port;
           constructor.emit('connected', port);
 
-          sp.write('LOOP 1\n');
+          sp.write('LOOP 1000\n');
           return;
         }
       }
@@ -95,24 +95,6 @@ function _setupSerialConnection() {
         data = data.slice(1);
       }
       parsePacket(data);
-
-      // Package is complete if the start- and stop character are received
-      if (startCharPos >= 0 && endCharPos >= 0) {
-        var packet = received.substr(startCharPos, endCharPos - startCharPos);
-        var parsedPacket = parsePacket(data);
-
-        received = '';
-
-        debug.writeToLogFile(packet, parsedPacket);
-
-        constructor.emit('reading-raw', packet);
-
-        if (parsedPacket.timestamp !== null) {
-          constructor.emit('reading', parsedPacket);
-        } else {
-          constructor.emit('error', 'Invalid reading');
-        }
-      }
     });
   });
 
